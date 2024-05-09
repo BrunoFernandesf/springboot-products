@@ -48,6 +48,7 @@ public class ProductController {
         if(productO.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found");
         }
+        productO.get().add(linkTo(methodOn(ProductController.class).getOneProduct(id)).withSelfRel());
         return ResponseEntity.status(HttpStatus.OK).body(productO.get());
     }
 
